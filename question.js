@@ -9,6 +9,19 @@ var questions = [
       choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
       answer: "parentheses"
     },
+
+    {
+      title: "",
+      choices: [""],
+      answer: ""
+    }
     ///etc.
   ];
+
+var startBtn = document.getElementById("start");
+var timer = 0;
+  
+  
+
+startBtn.addEventListener("click", quiz());
   
