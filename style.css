@@ -1,3 +1,14 @@
+.top-line {
+    font-size: 18px;
+    color: orchid;
+    padding: 5px;
+}
+
+.timer {
+    float: right;
+    margin-right: 5px;
+}
+
 .container {
     margin-top: 5rem;
     flex-direction: column;
@@ -7,10 +18,25 @@
     height: 600px;
     padding: 30px;
     border-radius: 50px;
+    color: white;
+    font-family: Arial;
+}
+
+.vertical-center {
+    display: flex;
+    align-items: center;
+}
+
+.para {
+    font-size: 24px;
 }
 
 .start {
-    background-color: grey;
+    background-color: purple;
     font-size: 24px;
     color: white;
+}
+
+.hide {
+    display: none;
 }
