@@ -6,11 +6,13 @@ var startBtn = document.getElementById("start");
 console.log(startBtn);
 var paraGrab = document.getElementById("para");
 console.log(paraGrab);
-var listDiv = document.getElementById("list-group");  
-var question = document.getElementById("question");
+var listDiv = document.getElementById("myList");    
+console.log(listDiv);
+var questionEl = document.getElementById("question");
 var choices = document.getElementById("choices"); 
 var container = document.getElementById("container");
 var timeEl = document.getElementById("timer");
+var randomQuestion, questionIndex;
 var time;
 var score = 0;
 
@@ -24,33 +26,46 @@ function quizStart() {
     paraGrab.setAttribute("id", "hide");
 
     // show the question and choices
-    listDiv.removeAttribute("id");
+    console.log(listDiv);
+    listDiv.classList.remove("hide");
+    console.log(listDiv.classList);
+    time = setInterval(quiz, 60000);
+    console.log(time);
+
+    nextQuestion();
 }
-// function quiz() {
 
-//   for (var i = 0; i < questions.length; i++) {
+function quiz() {
+  nextQuestion();
+  console.log("we made it here!");
+  questionEl.append(questions.title[questionIndex]);
+  
+}
 
-//     time = 60;
-//     timer.innerHTML(time.value);
 
-//     var title = questions[i].title;
-//     document.append(title);
-//     var ul = document.getElementById("list");
-//     var li = document.createElement("li");
-//     var choices = document.createElement("button", questions[i].choices);
-//     li.appendChild(choices);
-//     ul.appendChild(li);
+function nextQuestion() {
+  randomQuestion = Math.floor(Math.random() * 9);
+  console.log(randomQuestion);
+  questions[title] = showQuestion[questionIndex];
+  
+}
 
-//     var userChoice = this.addEventListener(questions.choices);
+function showQuestion(title) {
+  questionIndex = questions[title * randomQuestion];
+}
 
-//     var answer = questions[i].answer;
+function choicesAppend () {
+  return;
+}
 
-//     if (userChoice.innerHTML === questions[i].answer) {
-//       document.createElement("");
-//       score = currentTime + 1;
-//     } else {
-//       score = 0;
-//     }
-//   }
-// }
+function checkAnswer () {
+  return;
+}
+
+choices.addEventListener("click", checkAnswer);
+
+function setAnswer() {
+
+  return;
+}
 });
