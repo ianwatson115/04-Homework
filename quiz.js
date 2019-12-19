@@ -8,13 +8,22 @@ var paraGrab = document.getElementById("para");
 console.log(paraGrab);
 var listDiv = document.getElementById("myList");    
 console.log(listDiv);
-var questionEl = document.getElementById("question");
-var choices = document.getElementById("choices"); 
 var container = document.getElementById("container");
+var questionEl = document.getElementById("question");
+var choices = Array.from(document.getElementsByClassName("choices")); 
+console.log(choices);
+var acceptingAnswers = true;
+var questionCounter = 0;
+var maxQuestions = 3;
 var timeEl = document.getElementById("timer");
 var randomQuestion, questionIndex;
 var time;
+var availableQuestions = [];
+
+//vars for getting score
 var score = 0;
+var correctBonus = 10;
+var currentQuestion = {};
 
 startBtn.addEventListener("click", quizStart);
 
@@ -24,6 +33,13 @@ function quizStart() {
   console.log("Wow it started!");
     startBtn.setAttribute("id", "hide");
     paraGrab.setAttribute("id", "hide");
+
+
+    //
+    questionCounter = 0;
+    score = 0;
+    availableQuestions = [ ... questions];
+    console.log(availableQuestions);
 
     // show the question and choices
     console.log(listDiv);
@@ -36,17 +52,23 @@ function quizStart() {
 }
 
 function quiz() {
-  nextQuestion();
+  
   console.log("we made it here!");
-  questionEl.append(questions.title[questionIndex]);
+  questionEl.append();
   
 }
 
 
 function nextQuestion() {
-  randomQuestion = Math.floor(Math.random() * 9);
-  console.log(randomQuestion);
-  questions[title] = showQuestion[questionIndex];
+  questionCounter++;
+
+  questionIndex = Math.floor(Math.random() * availableQuestions.length);
+  console.log(questionIndex);
+  
+  currentQuestion = availableQuestions[questionIndex];
+  console.log(currentQuestion);
+
+  questionEl.innerText = currentQuestion.title;
   
 }
 
@@ -62,10 +84,11 @@ function checkAnswer () {
   return;
 }
 
-choices.addEventListener("click", checkAnswer);
+// choices.addEventListener("click", checkAnswer);
 
 function setAnswer() {
 
   return;
 }
+startBtn.addEventListener("click", quizStart);
 });

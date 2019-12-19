@@ -43,6 +43,10 @@
     font-weight: bold;
 }
 
+.choices {
+    color: rgb(127, 255, 202);
+}
+
 .hide {
     display: none;
 }
