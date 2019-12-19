@@ -10,8 +10,8 @@ var listDiv = document.getElementById("myList");
 console.log(listDiv);
 var container = document.getElementById("container");
 var questionEl = document.getElementById("question");
-var choices = Array.from(document.getElementsByClassName("choices")); 
-console.log(choices);
+var choiceEl = Array.from(document.getElementsByClassName("choices")); 
+console.log(choiceEl);
 var acceptingAnswers = true;
 var questionCounter = 0;
 var maxQuestions = 3;
@@ -60,17 +60,42 @@ function quiz() {
 
 
 function nextQuestion() {
+
+  if (availableQuestions.length === 0 || questionCounter >= maxQuestions){
+    return window.location.assign("end.html");
+  }
+
   questionCounter++;
 
   questionIndex = Math.floor(Math.random() * availableQuestions.length);
-  console.log(questionIndex);
   
   currentQuestion = availableQuestions[questionIndex];
-  console.log(currentQuestion);
 
   questionEl.innerText = currentQuestion.title;
+
+  choiceEl.forEach( choice => {
+    var number = choice.dataset["number"];
+    
+    choice.innerText = currentQuestion.choices[number - 1];
+  })
+
+  availableQuestions.splice(questionIndex, 1);
   
+  acceptingAnswers = true;
 }
+
+choiceEl.forEach(choice => {
+  choice.addEventListener("click", e => {
+    if (!acceptingAnswers) {
+      return;
+    }
+    acceptingAnswers = false; 
+    var selectedChoice = e.target;
+    var selectedAnswer = selectedChoice.dataset["number"];
+    console.log(selectedAnswer);
+    nextQuestion();
+  })
+})
 
 function showQuestion(title) {
   questionIndex = questions[title * randomQuestion];
@@ -90,5 +115,7 @@ function setAnswer() {
 
   return;
 }
+//event listeners
 startBtn.addEventListener("click", quizStart);
+
 });
