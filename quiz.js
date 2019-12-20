@@ -3,15 +3,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
 var startBtn = document.getElementById("start");
-console.log(startBtn);
+// console.log(startBtn);
 var paraGrab = document.getElementById("para");
-console.log(paraGrab);
+// console.log(paraGrab);
 var listDiv = document.getElementById("myList");    
-console.log(listDiv);
+// console.log(listDiv);
 var container = document.getElementById("container");
 var questionEl = document.getElementById("question");
 var choiceEl = Array.from(document.getElementsByClassName("choices")); 
-console.log(choiceEl);
+// console.log(choiceEl);
 var acceptingAnswers = true;
 var questionCounter = 0;
 var maxQuestions = 3;
@@ -21,6 +21,7 @@ var time;
 var availableQuestions = [];
 
 //vars for getting score
+var scoreEl = document.getElementById("score");
 var score = 0;
 var correctBonus = 10;
 var currentQuestion = {};
@@ -29,26 +30,25 @@ startBtn.addEventListener("click", quizStart);
 
 
 function quizStart() {
-    //hide the button and paragraph
-  console.log("Wow it started!");
-    startBtn.setAttribute("id", "hide");
-    paraGrab.setAttribute("id", "hide");
-
-
-    //
-    questionCounter = 0;
-    score = 0;
-    availableQuestions = [ ... questions];
-    console.log(availableQuestions);
-
-    // show the question and choices
-    console.log(listDiv);
-    listDiv.classList.remove("hide");
-    console.log(listDiv.classList);
-    time = setInterval(quiz, 60000);
-    console.log(time);
-
-    nextQuestion();
+  //hide the button and paragraph
+  // console.log("Wow it started!");
+  startBtn.setAttribute("id", "hide");
+  paraGrab.setAttribute("id", "hide");
+  
+  questionCounter = 0;
+  score = 0;
+  availableQuestions = [ ... questions];
+  // console.log(availableQuestions);
+  
+  // show the question and choices
+  // console.log(listDiv);
+  listDiv.classList.remove("hide");
+  // console.log(listDiv.classList);
+ 
+  time = setInterval(quiz, 60000);
+  timeEl = parseInt(time);
+  console.log(time);
+  nextQuestion();
 }
 
 function quiz() {
@@ -92,8 +92,44 @@ choiceEl.forEach(choice => {
     acceptingAnswers = false; 
     var selectedChoice = e.target;
     var selectedAnswer = selectedChoice.dataset["number"];
-    console.log(selectedAnswer);
-    nextQuestion();
+
+    var alertBottom = document.getElementById("getBottom");
+    
+    // all of our setters
+    var classToApply = "incorrect";
+    var alertClass = "";
+    var alertText = "";
+
+    if (selectedAnswer === currentQuestion.numAnswer) {
+      classToApply = "correct";
+      score += 5;
+      alertClass = "alert-success";
+      alertText = "Correct!"
+    } else {
+      classToApply = "incorrect"
+      score -= 5;
+      alertClass = "alert-danger";
+      alertText = "Incorrect!"
+    }
+
+    selectedChoice.classList.add(classToApply);
+    alertBottom.classList.add(alertClass);
+    alertBottom.innerText += alertText;
+    console.log(alertBottom);
+    scoreEl.innerText = parseInt(score);
+    
+     setTimeout(() => {
+      selectedChoice.classList.remove(classToApply);
+      alertBottom.classList.remove(alertClass);
+      alertBottom.innerText = "";
+
+      nextQuestion();
+
+    }, 1000)
+
+    
+    
+    // console.log(selectedAnswer === currentQuestion.numAnswer);
   })
 })
 

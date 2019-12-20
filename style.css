@@ -47,8 +47,23 @@
     color: rgb(127, 255, 202);
 }
 
+#score {
+    background-color: white;
+    padding: 5px;
+    border-radius: 2px;
+}
+
+
 .hide {
     display: none;
+}
+
+.correct {
+    background-color: #28a745;
+}
+
+.incorrect {
+    background-color: #dc3545;
 }
 
 #hide {
