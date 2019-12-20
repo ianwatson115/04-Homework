@@ -45,7 +45,7 @@ function quizStart() {
   listDiv.classList.remove("hide");
   // console.log(listDiv.classList);
  
-  time = setInterval(quiz, 60000);
+  time = setInterval(60000);
   timeEl = parseInt(time);
   console.log(time);
   nextQuestion();
@@ -62,7 +62,9 @@ function quiz() {
 function nextQuestion() {
 
   if (availableQuestions.length === 0 || questionCounter >= maxQuestions){
+    localStorage.setItem("mostRecentScore", score);
     return window.location.assign("end.html");
+
   }
 
   questionCounter++;
@@ -133,24 +135,10 @@ choiceEl.forEach(choice => {
   })
 })
 
-function showQuestion(title) {
-  questionIndex = questions[title * randomQuestion];
-}
+// function showQuestion(title) {
+//   questionIndex = questions[title * randomQuestion];
+// }
 
-function choicesAppend () {
-  return;
-}
-
-function checkAnswer () {
-  return;
-}
-
-// choices.addEventListener("click", checkAnswer);
-
-function setAnswer() {
-
-  return;
-}
 //event listeners
 startBtn.addEventListener("click", quizStart);
 
