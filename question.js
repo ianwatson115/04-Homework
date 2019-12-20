@@ -21,7 +21,7 @@ var questions = [
 
     {
       title: "The external JavaScript file must contain the <script> tag.",
-      choices: ["true", "false"],
+      choices: ["true", "false", "truthy", "falsey"],
       answer: "true",
       numAnswer: "1"
     }
