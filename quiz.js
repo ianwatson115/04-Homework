@@ -14,7 +14,7 @@ var choiceEl = Array.from(document.getElementsByClassName("choices"));
 // console.log(choiceEl);
 var acceptingAnswers = true;
 var questionCounter = 0;
-var maxQuestions = 3;
+var maxQuestions = 4;
 var timeEl = document.getElementById("timer");
 var randomQuestion, questionIndex;
 var time;
@@ -47,7 +47,7 @@ function quizStart() {
  
   time = setInterval(60000);
   timeEl = parseInt(time);
-  console.log(time);
+  console.log(timeEl);
   nextQuestion();
 }
 

@@ -24,7 +24,7 @@ initials.addEventListener("keyup", ()  => {
 function saveHighScore () {
     
     var score = {
-        score: Math.floor(Math.random()*100),
+        score: mostRecentScore,
         name: initials.value
     };
     

@@ -17,6 +17,13 @@ var questions = [
       choices: ["variable declaration", "update counter" , "condition", "semicolon at the end of the update counter"],
       answer: "semicolon at the end of the update counter",
       numAnswer: "4"
+    },
+
+    {
+      title: "The external JavaScript file must contain the <script> tag.",
+      choices: ["true", "false"],
+      answer: "true",
+      numAnswer: "1"
     }
     ///etc.
   ];

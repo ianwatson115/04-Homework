@@ -87,7 +87,26 @@
     background-color: purple;
     font-size: 24px;
     color: white;
-    
+}
+
+#finalScore {
+    font-family: Arial;
+    font-size: 50px;
+    color: white;
+}
+
+.anchor {
+    color: white;
+}
+
+#highScoresList {
+    list-style: none;
+}
+
+.high-score {
+    font-family: Arial;
+    font-size: 30px;
+    color: white;
 }
 
 #hide {
